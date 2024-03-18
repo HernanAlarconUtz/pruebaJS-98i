@@ -59,12 +59,30 @@ document.write("7) El numero mayor de los tres ingresados es: ", mayorDeTres, "<
 const numero = parseInt(prompt("8)Ingrese un numero: "));
 
 if (numero % 2 === 0) {
-    document.write("8) El numero ", numero," es divisible por 2");
+    document.write("8) El numero ", numero," es divisible por 2 <b>");
 } else {
-    document.write("8) El numero ", numero, " no es divibile por 2");
+    document.write("8) El numero ", numero, " no es divibile por 2 <br>");
 }
 
 //10.- Escribe un programa que pida un número y nos diga si es divisible por 2, 3, 5 o 7 (sólo hay que comprobar si lo es por uno de los cuatro)
+
+const n = parseInt(prompt("10)Ingrese un numero: ")) 
+    let divisible;
+
+    if(n % 2 === 0){
+        divisible = 2;
+    } else if (n % 3 === 0){
+        divisible = 3;
+    } else if (n % 5 === 0){
+        divisible = 5;
+    } else if (n % 7 === 0){
+        divisible = 7;
+    }
+
+    document.write("<br>10)el numero ", n, " es divisible por: ", divisible);
+
+
+//11.- Añadir al ejercicio anterior que nos diga por cuál de los cuatro es divisible (hay que decir todos por los que es divisible)
 
 
 
