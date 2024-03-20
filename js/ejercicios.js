@@ -84,6 +84,21 @@ const n = parseInt(prompt("10)Ingrese un numero: "))
 
 //11.- Añadir al ejercicio anterior que nos diga por cuál de los cuatro es divisible (hay que decir todos por los que es divisible)
 
+const n1 = parseInt(prompt("11) Ingrese un numero: "));
 
+if(n1 % 2 === 0){
+  document.write("<br>El numero ", n1," es divisible por 2");
+}
+if(n1 % 3 === 0){
+  document.write("<br>El numero ", n1," es divisible por 3");
+}
+if(n1 % 5 === 0){
+  document.write("<br>El numero ", n1," es divisible por 5");
+}
+if(n1 % 3 === 7){
+  document.write("<br>El numero ", n1," es divisible por 7");
+}else {
+  document.write("<br>El numero ", n1," no es divisible por 2, 3, 5 y 7");
+}
 
 
