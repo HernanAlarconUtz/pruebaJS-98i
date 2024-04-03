@@ -11,6 +11,14 @@ for (let i = 0; i < texto.length; i++) {
     case "i":
     case "o":
     case "u":
+    case "á":
+    case "é":
+    case "í":
+    case "ó":
+    case "ú":
+    case "ä":
+    case "ö":
+    case "ü":
       vocales++;
       break;
     default:
@@ -18,4 +26,4 @@ for (let i = 0; i < texto.length; i++) {
   }
 }
 
-console.log(vocales);
+document.write(`El texto ingresado tiene ${vocales} vocales`)
