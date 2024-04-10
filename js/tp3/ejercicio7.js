@@ -13,7 +13,12 @@ function tablaMultiplicar(numero) {
   }
 }
 
-const numero = parseInt(prompt("Ingrese un numero:"));
+let numero;
+do {
+  numero = parseInt(prompt("Ingrese un número: "));
+} while (isNaN(numero));
 
-document.write(`<h1>La tabla de multiplicar del ${numero} es la siguiente</h1>`);
+document.write(
+  `<h1>La tabla de multiplicar del ${numero} es la siguiente</h1>`
+);
 tablaMultiplicar(numero);
