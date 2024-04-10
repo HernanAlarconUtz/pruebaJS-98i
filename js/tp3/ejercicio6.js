@@ -22,10 +22,7 @@ do {
 } while (isNaN(ladoA) || isNaN(ladoB) || ladoA <= 0 || ladoB <= 0);
 
 let resultado = calcularPerimetro(ladoA, ladoB);
-if (typeof resultado === "string") {
-  alert(resultado);
-} else {
-  alert(
-    `El perimetro del rectangulo con lado A = ${ladoA} y lado B = ${ladoB}, es igual a  ${resultado}`
-  );
-}
+
+alert(
+  `El perimetro del rectangulo con lado A = ${ladoA} y lado B = ${ladoB}, es igual a  ${resultado}`
+);
