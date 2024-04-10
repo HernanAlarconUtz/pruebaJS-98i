@@ -3,14 +3,8 @@
 // La fórmula del perímetro  es p = 2*(a +b)
 
 function calcularPerimetro(ladoA, ladoB) {
-  if (isNaN(ladoA) || ladoA <= 0) {
-    return "El valor del lado A no es un numero valido";
-  } else if (isNaN(ladoB) || ladoB <= 0) {
-    return "El valor del lado B no es un numero valido";
-  } else {
-    const perimetro = 2 * (ladoA + ladoB);
-    return perimetro;
-  }
+  const perimetro = 2 * (ladoA + ladoB);
+  return perimetro;
 }
 
 let ladoA;
@@ -19,6 +13,11 @@ let ladoB;
 do {
   ladoA = parseInt(prompt("Ingrese el valor del lado A del rectangulo:"));
   ladoB = parseInt(prompt("Ingrese el valor del lado B del rectangulo:"));
+  if (isNaN(ladoA) || isNaN(ladoB) || ladoA <= 0 || ladoB <= 0) {
+    alert(
+      "Los valores ingresados no pueden ser negativos o iguales a cero. Por favor, inténtelo de nuevo."
+    );
+  }
 } while (isNaN(ladoA) || isNaN(ladoB) || ladoA <= 0 || ladoB <= 0);
 
 let resultado = calcularPerimetro(ladoA, ladoB);
