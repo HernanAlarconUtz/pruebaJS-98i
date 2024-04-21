@@ -12,7 +12,7 @@ class Producto {
   }
 
   mostrarDatos() {
-    document.write(`${this.codigo} ${this.nombre} ${this.precio} </br>`);
+    console.log(`${this.codigo} ${this.nombre} ${this.precio} `);
   }
 }
 
