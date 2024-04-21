@@ -26,8 +26,19 @@ class Rectangulo {
   }
 }
 
-const height = parseInt(prompt("Ingrese la altura del rectangulo:"));
-const weight = parseInt(prompt("Ingrese el ancho del rectangulo:"));
+function pedirNumero(mensaje) {
+  let numero;
+  do{
+    numero = parseInt(prompt(mensaje));
+    if(isNaN(numero) || numero <= 0){
+      console.log("Número inválido. Por favor, ingrese un número válido.");
+    }
+  }while(isNaN(numero) || numero <= 0);
+  return numero;
+}
+
+const height = pedirNumero("Ingrese la altura del rectangulo:");
+const weight = pedirNumero("Ingrese el ancho del rectangulo:");
 
 const rectangulo1 = new Rectangulo(height, weight);
 
@@ -39,8 +50,8 @@ console.log(`El perimetro del rectangulo es: ${perimetro}`);
 const area = rectangulo1.area();
 console.log(`El area del rectangulo es: ${area}`);
 
-const newHeight = parseInt(prompt("Ingrese la nueva altura del rectangulo: "));
-const newWeight = parseInt(prompt("Ingrese el nuevo ancho del rectangulo: "));
+const newHeight = pedirNumero("Ingrese la nueva altura del rectangulo: ");
+const newWeight = pedirNumero("Ingrese el nuevo ancho del rectangulo: ");
 
 const rectangulo2 = new Rectangulo(newHeight, newWeight);
 

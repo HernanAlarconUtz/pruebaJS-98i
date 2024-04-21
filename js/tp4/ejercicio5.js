@@ -7,10 +7,10 @@
 // generaDNI(): genera un número aleatorio de 8 cifras.
 
 class Persona {
-  constructor(nombre, edad, dni, sexo, peso, altura, añoNacimiento) {
+  constructor(nombre, edad, sexo, peso, altura, añoNacimiento) {
     this.nombre = nombre;
     this.edad = edad;
-    this.dni = dni;
+    this.dni = this.generarDNI();
     this.sexo = sexo;
     this.peso = peso;
     this.altura = altura;
@@ -61,10 +61,11 @@ class Persona {
   }
 }
 
+
 const persona = new Persona(
   "Nahuel",
   25,
-  123123,
+
   "poco",
   50,
   175,
