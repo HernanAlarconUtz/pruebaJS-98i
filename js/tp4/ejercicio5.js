@@ -61,18 +61,26 @@ class Persona {
   }
 }
 
+function pedirNumero(mensaje) {
+  let numero;
+  do {
+    numero = parseInt(prompt(mensaje));
+    if (isNaN(numero) || numero <= 0) {
+      alert("Número inválido. Por favor, ingrese un número válido.");
+    }
+  } while (isNaN(numero) || numero <= 0);
+  return numero;
+}
 
-const persona = new Persona(
-  "Nahuel",
-  25,
+const name = prompt("Ingrese el nombre de la persona:");
+const age = pedirNumero("Ingrese la edad de la persona:");
+const sex = prompt("Ingrese el sexo de la persona");
+const weight = pedirNumero("Ingrese el peso de la persona:");
+const height = pedirNumero("Ingrese la altura de la persona:");
+const yearBirth = pedirNumero("Ingrese el año de nacimiento:");
 
-  "poco",
-  50,
-  175,
-  1997
-);
+const persona = new Persona(name, age, sex, weight, height, yearBirth);
 
 persona.mostrarDatos();
 persona.mostrarGeneracion();
 persona.esMayorDeEdad();
-
