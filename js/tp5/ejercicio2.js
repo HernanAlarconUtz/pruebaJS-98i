@@ -21,32 +21,34 @@ class Persona {
   mostrarGeneracion() {
     if (this.añoNacimiento >= 1994 && this.añoNacimiento <= 2010) {
       alert(
-        `${this.nombre} es parte de las 7.800.000 personas que pertenecen a la GENERACION Z. Las personas de esta generacion vivieron la expansión masiva del intertnet. Suelen ser bastante irreverentes </br>`
+        `${this.nombre} es parte de las 7.800.000 personas que pertenecen a la GENERACION Z. Las personas de esta generacion vivieron la expansión masiva del intertnet. Suelen ser bastante irreverentes`
       );
     } else if (this.añoNacimiento >= 1981 && this.añoNacimiento <= 1993) {
       alert(
-        `${this.nombre} es parte de las 7.200.000 personas que pertenecen a la GENERACION Y tambien llamados MILLENIALS. Las personas de esta generacion vivieron el inicio de la digitalización. Suelen estar frustrados todo el tiempo </br>`
+        `${this.nombre} es parte de las 7.200.000 personas que pertenecen a la GENERACION Y tambien llamados MILLENIALS. Las personas de esta generacion vivieron el inicio de la digitalización. Suelen estar frustrados todo el tiempo`
       );
     } else if (this.añoNacimiento >= 1969 && this.añoNacimiento <= 1980) {
       alert(
-        `${this.nombre} es parte de las 9.300.000 personas que pertenecen a la GENERACION X. Las personas de esta generacion vivieron la crisis del 73 y la transición española. Estas personas estan obsesionadas por el exito</br>`
+        `${this.nombre} es parte de las 9.300.000 personas que pertenecen a la GENERACION X. Las personas de esta generacion vivieron la crisis del 73 y la transición española. Estas personas estan obsesionadas por el exito`
       );
     } else if (this.añoNacimiento >= 1949 && this.añoNacimiento <= 1968) {
       alert(
-        `${this.nombre} es parte de las 12.200.000 personas que pertenecen a la BABY BOOM. Las personas de esta generacion vivieron la paz y explosión demografica. Estas personas suelen ser muy ambiciosas</br>`
+        `${this.nombre} es parte de las 12.200.000 personas que pertenecen a la BABY BOOM. Las personas de esta generacion vivieron la paz y explosión demografica. Estas personas suelen ser muy ambiciosas`
       );
     } else if (this.añoNacimiento >= 1930 && this.añoNacimiento <= 1948) {
       alert(
-        `${this.nombre} es parte de las 6.300.000 personas que pertenecen a la BABY BOOM. Las personas de esta generacion vivieron muchos conflictos belicos. Estas personas suelen ser muy austeras</br>`
+        `${this.nombre} es parte de las 6.300.000 personas que pertenecen a la BABY BOOM. Las personas de esta generacion vivieron muchos conflictos belicos. Estas personas suelen ser muy austeras`
       );
+    } else {
+      alert("No hay informacion de esa generacion");
     }
   }
 
   esMayorDeEdad() {
     if (this.edad >= 18) {
-      alert(`${this.nombre} es mayor de edad</br>`);
+      alert(`${this.nombre} es mayor de edad`);
     } else {
-      alert(`${this.nombre} es un bebe todavía</br>`);
+      alert(`${this.nombre} es un bebe todavía`);
     }
   }
 
@@ -58,53 +60,62 @@ class Persona {
 }
 
 const validarNombre = ($field) => {
-  if(!$field || !$field.value.trim()) {
-    alert("Nombre invalido")
+  if (!$field || !$field.value.trim()) {
+    alert("Nombre invalido");
+    alert("Porfavor Revisar el campo de nombre");
     return false;
   }
-
-  if($field.value.trim().length < 3 || $field.value.trim().length > 10) {
-    alert("Nombre invalido")
-    return false;
-  }
-
   const regex = /^[a-zA-ZÁÉÍÓÚáéíóúÜüÑñ\s]+$/;
-  if (regex.test($field.value)) {
-    alert("Nombre invalido")
-    return false;
-  }
-}
-
-const validarNumero = ($field) => {
-  if(!$field || !$field.value.trim()) {
-    alert("Numero invalido")
+  if (!regex.test($field.value)) {
+    alert("Nombre invalido");
+    alert("Porfavor Revisar el campo de nombre");
     return false;
   }
 
-  if(!isNaN($field.value) || $field.value <= 0) {
-    alert("Numero invalido")
-    return false;
-  } 
-}
+  return true;
+};
 
-const $form = document.getElementById("personaForm")
-const $inputNombre = document.getElementById("nombreInput")
-const $inputEdad = document.getElementById("edadInput")
-const $inputDni = document.getElementById("dniInput")
-const $inputSexo = document.getElementById("sexoInput")
-const $inputPeso = document.getElementById("pesoInput")
-const $inputAltura = document.getElementById("alturaInput")
-const $inputAñoNacimiento = document.getElementById("añoInput")
+const validarDocumento = ($field) => {
+  const regex = /^\d{7,8}$/;
+  if (!regex.test($field.value)) {
+    alert("Numero de documento invalido");
+    alert("Porfavor Revisar el campo de DNI");
+    return false;
+  }
+  return true;
+};
+
+const validarAñoNacimiento = ($field) => {
+  const regex = /^(19|20)\d{2}$/;
+  if (!regex.test($field.value)) {
+    alert("Año de nacimiento invalido");
+    alert("Porfavor Revisar el campo de año de nacimiento");
+    return false;
+  }
+  return true;
+};
+
+const $form = document.getElementById("personaForm");
+const $inputNombre = document.getElementById("nombreInput");
+const $inputEdad = document.getElementById("edadInput");
+const $inputDni = document.getElementById("dniInput");
+const $inputSexo = document.getElementById("sexoInput");
+const $inputPeso = document.getElementById("pesoInput");
+const $inputAltura = document.getElementById("alturaInput");
+const $inputAñoNacimiento = document.getElementById("añoInput");
+const $botonGeneracion = document.getElementById("mostrarGeneracionBtn");
+const $botonEdad = document.getElementById("esMayorDeEdadBtn");
 
 let persona;
 
 $form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  if (!validarNombre($inputNombre) || !validarNumero($inputEdad, $inputDni, $inputPeso, $inputAltura, $inputAñoNacimiento)) {
-    alert("Revisa los campos")
-    return;
-  }
+  if (!validarNombre($inputNombre)) return;
+
+  if (!validarDocumento($inputDni)) return;
+
+  if (!validarAñoNacimiento($inputAñoNacimiento)) return;
 
   const nombre = $inputNombre.value;
   const edad = $inputEdad.value;
@@ -114,49 +125,23 @@ $form.addEventListener("submit", (event) => {
   const altura = $inputAltura.value;
   const añoNacimiento = $inputAñoNacimiento.value;
 
-  persona = new Persona(nombre, edad, dni, sexo, peso, altura, añoNacimiento)
+  persona = new Persona(nombre, edad, dni, sexo, peso, altura, añoNacimiento);
 
-  console.log(persona)
+  console.log(persona);
+});
 
-})
-// let persona;
+$botonGeneracion.addEventListener("click", () => {
+  if (persona) {
+    persona.mostrarGeneracion();
+  } else {
+    alert("Primero debes crear una persona");
+  }
+});
 
-// const enviarFormulario = (event) => {
-//   event.preventDefault();
-//   nombre = document.querySelector("#nombre").value;
-//   edad = parseInt(document.querySelector("#edad").value);
-//   dni = parseInt(document.querySelector("#dni").value);
-//   peso = parseInt(document.querySelector("#peso").value);
-//   altura = parseInt(document.querySelector("#altura").value);
-//   añoNacimiento = parseInt(document.querySelector("#añoNacimiento").value);
-
-//   if (isNaN(edad) || isNaN(peso) || isNaN(altura) || isNaN(añoNacimiento)) {
-//     alert(
-//       "Por favor, ingrese valores numéricos válidos para la edad, peso, altura y año de nacimiento."
-//     );
-//     return;
-//   }
-
-//   persona = new Persona(nombre, edad, dni, sexo, peso, altura, añoNacimiento);
-
-//   console.log(persona);
-
-//   limpiarForm();
-// };
-
-// const limpiarForm = () => {
-//   document.querySelector("#formulario").reset();
-//   document.querySelector("#nombre").focus();
-// };
-
-// document
-//   .querySelector("#formulario")
-//   .addEventListener("submit", enviarFormulario);
-
-// document
-//   .querySelector("#botonMayorEdad")
-//   .addEventListener("click", persona.esMayorDeEdad);
-
-// document
-//   .querySelector("#botonMostrarGeneracion")
-//   .addEventListener("click", persona.mostrarGeneracion);
+$botonEdad.addEventListener("click", () => {
+  if (persona) {
+    persona.esMayorDeEdad();
+  } else {
+    alert("Primero debes crear una persona");
+  }
+});
