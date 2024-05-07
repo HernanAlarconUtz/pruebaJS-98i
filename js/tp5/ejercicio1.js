@@ -12,14 +12,14 @@ alert("Es hora de que ustedes tambien sufran. Que comience el juego");
 let numeroAleatorio;
 
 const generarNumero = () => {
-  numeroAleatorio = Math.floor(Math.random() * 10) + 1;
+  numeroAleatorio = Math.floor(Math.random() * 10000) + 1;
   console.log(numeroAleatorio);
 };
 
 const verificarNumero = (event) => {
   event.preventDefault();
   const numeroIngresado = parseInt(document.querySelector("#numero").value);
-  if (isNaN(numeroIngresado) || numeroIngresado < 1 || numeroIngresado > 10) {
+  if (isNaN(numeroIngresado) || numeroIngresado < 1 || numeroIngresado > 10000) {
     alert("Número inválido. Por favor, ingrese un número entre 1 y 10.");
   } else if (numeroIngresado === numeroAleatorio) {
     alert(
@@ -27,8 +27,10 @@ const verificarNumero = (event) => {
     );
   } else if (numeroIngresado > numeroAleatorio) {
     alert("El número ingresado es mayor que el número mágico.");
+    alert("chau cabeza")
   } else {
     alert("El número ingresado es menor que el número mágico.");
+    alert("chau cabeza")
   }
 };
 
